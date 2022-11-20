@@ -2,4 +2,7 @@ Task 5: Reflection
 Write a short text file named lab1reflection.txt that answers the following questions. You can write in Swedish or English.
 
 1. Explain how you chose the inheritance hierarchy in Task 1, making reference to the Open-Closed Principle.
+
+We wanted the code to be expandable and therefore chose to put all of the commen aspects of a car, methods such as "gas" and "break" in a superclass which the different cars inherited. 
+If you wanted to expand the program by adding more and different cars you could do so without changing the core code of the program. 
 2. Explain how you implemented each of the sanity checks in Task 4
