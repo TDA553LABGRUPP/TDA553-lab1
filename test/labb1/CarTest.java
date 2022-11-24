@@ -38,7 +38,7 @@ public class CarTest {
         
         Saab95 saab = new Saab95(Color.red, 2, 3, 1, 1);
 
-        assertEquals(2, saab.getNrDoors());
+        assertEquals(2, saab.vehicle.getNrDoors());
     }
     
     @Test

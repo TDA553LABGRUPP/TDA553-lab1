@@ -3,19 +3,20 @@ import java.awt.*;
 // To-Do
 // Add turning radius, a variable that change how fast the car turns
 
-public abstract class Vehicle implements Movable {
+public class Vehicle implements Movable {
     private int nrDoors;
     private Color color;
-    protected double enginePower;
+    protected  double enginePower;
     private String modelName;
     private double currentSpeedX;
     private double currentSpeedY;
     private double x;
     private double y;
-    private double[] direction; // x and y list for the direction that  the car is supposed to move in
+    private double[] direction; 
+    private double speedFactor;// x and y list for the direction that  the car is supposed to move in
 
     
-    public Vehicle(int nrDoors, Color color, int enginePower, String modelName, double  x, double y, double dirX, double dirY) {
+    public Vehicle(int nrDoors, Color color, double enginePower, String modelName, double  x, double y, double dirX, double dirY, double speedFactor) {
         this.nrDoors = nrDoors;
         this.color = color;
         this.enginePower = enginePower;
@@ -23,6 +24,7 @@ public abstract class Vehicle implements Movable {
         this.x = x;
         this.y = y;
         this.direction = new double[] {dirX, dirY} ;
+        this.speedFactor = speedFactor;
         stopEngine();
     }//car
     
@@ -67,6 +69,7 @@ public abstract class Vehicle implements Movable {
     public void setColor(Color clr){
         color = clr;
     }
+
 
     private void setCurrentSpeedX(double speed){
         this.currentSpeedX = speed;
@@ -166,17 +169,15 @@ public abstract class Vehicle implements Movable {
     }
  
     private void incrementSpeed(double amount){
-        currentSpeedX = calculateSpeed(getCurrentSpeedX() + speedFactor()*amount, amount)*this.direction[0];
-        currentSpeedY  = calculateSpeed(getCurrentSpeedY() + speedFactor()*amount, amount)*this.direction[1];
+        currentSpeedX = calculateSpeed(getCurrentSpeedX() + speedFactor*amount, amount)*this.direction[0];
+        currentSpeedY  = calculateSpeed(getCurrentSpeedY() + speedFactor*amount, amount)*this.direction[1];
     }
     
     private void decrementSpeed(double amount){
         
-        currentSpeedX = calculateSpeed(getCurrentSpeedX() - speedFactor()*amount, amount)*this.direction[0];
-        currentSpeedY = calculateSpeed(getCurrentSpeedY() - speedFactor()*amount, amount)*this.direction[1];  
+        currentSpeedX = calculateSpeed(getCurrentSpeedX() - speedFactor*amount, amount)*this.direction[0];
+        currentSpeedY = calculateSpeed(getCurrentSpeedY() - speedFactor*amount, amount)*this.direction[1];  
     }
-    
-    public abstract double speedFactor();
 
     
 }
