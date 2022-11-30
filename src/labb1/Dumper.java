@@ -5,12 +5,14 @@ public class Dumper extends Trailer {
     private final int MIN_EXTENSION_ANGLE;
     private final int MAX_EXTENSOIN_ANGLE;
     private Boolean platformStopped;
+    Loadable loadable;
 
-    public Dumper(int maxLoad, int MIN_EXTENSION_ANGLE, int MAX_EXTENSOIN_ANGLE) {
-        super(maxLoad);
+    public Dumper(int maxLoad, int MIN_EXTENSION_ANGLE, int MAX_EXTENSOIN_ANGLE, double x, double y) {
+        super(maxLoad, x, y);
         this.MIN_EXTENSION_ANGLE = MIN_EXTENSION_ANGLE;
         this.MAX_EXTENSOIN_ANGLE = MAX_EXTENSOIN_ANGLE;
         this.platformStopped = false;
+        loadable = new Loadable(maxLoad, x, y);
     }
 
     // Specific method for raising the platsform of the truck
