@@ -21,7 +21,7 @@ public abstract class Trailer {
     /**
      * @return true if the platform is extended
      */
-    public boolean getPlatformExtended() {
+    public Boolean getPlatformExtended() {
         return platformExtended;
     }
 
@@ -47,15 +47,6 @@ public abstract class Trailer {
         return maxLoad;
     }
 
-        /**
-     * Load the platform with a movable object
-     * 
-     * @param a thing of type Movable
-     */
-    public abstract void load(Movable thing);
-    
-
-    public abstract Movable unload(Movable item);
     /**
      * Non abstract subclasses need to implement this
      */

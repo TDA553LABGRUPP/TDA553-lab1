@@ -49,12 +49,8 @@ public class Flatbed extends Trailer {
      * 
      * @param car as type Car
      */
-    public void load(Movable car) {
-        if (car instanceof Car){
-            loadable.load(car);
-        }else{
-            throw new IllegalArgumentException("Input needs to be a car");
-        }       
+    public void load(Car car) {
+        loadable.load(car);
     }
 
     /**
@@ -62,7 +58,7 @@ public class Flatbed extends Trailer {
      * 
      * @return a movable
      */
-    public Movable unload(Movable item) {
-        return loadable.unload(item);
+    public Movable unload() {
+        return loadable.unload(null);
     }
 }
