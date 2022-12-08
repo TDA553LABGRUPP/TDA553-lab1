@@ -101,6 +101,24 @@ public abstract class Vehicle implements Movable {
     }
 
     /**
+     * Gets the direction vector of the Vehicle in the y direction
+     * 
+     * @return Vehicle direction y
+     */
+    public double getDirectionY() {
+        return direction[1];
+    }
+
+    /**
+     * Gets the direction vector of the Vehicle in the x direction
+     * 
+     * @return Vehicle direction x
+     */
+    public double getDirectionX() {
+        return direction[0];
+    }
+
+    /**
      * @return the color of the vehicle
      */
     public Color getColor() {

@@ -74,8 +74,8 @@ public class Dumper extends Trailer {
      * 
      * @return item of type Movable
      */
-    public Movable unload() {
-        return loadable.unload(null);
+    public Movable unload(Movable item) {
+        return loadable.unload(item);
     }
 
     /**
