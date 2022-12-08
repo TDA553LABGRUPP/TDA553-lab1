@@ -6,7 +6,6 @@ import java.awt.*;
  * Abstract class of any Truck. Extends Vehicle. Truck must have a max load
  */
 public abstract class Truck extends Vehicle {
-    private Trailer trailer;
 
     /**
      * Constructor of Truck
@@ -21,9 +20,8 @@ public abstract class Truck extends Vehicle {
      * @param maxLoad     is the max load that the truck can take
      */
     public Truck(Color color, int enginePower, String modelName, double x, double y, double dirX, double dirY,
-            int maxLoad, Trailer trailer) {
+            int maxLoad) {
         super(2, color, enginePower, modelName, x, y, dirX, dirY);
-        this.trailer = trailer;
     }// Constructor
 
     /**
@@ -33,7 +31,7 @@ public abstract class Truck extends Vehicle {
      */
     @Override
     public void gas(double amount) {
-        if (trailer.getPlatformExtended()) {
+        if (this.getTrailer().getPlatformExtended()) {
             throw new IllegalArgumentException("Can not move while platform is extended");
         } else {
             super.gas(amount);
@@ -48,32 +46,21 @@ public abstract class Truck extends Vehicle {
         if (this.getCurrentSpeedX() > 0 && this.getCurrentSpeedY() > 0) {
             throw new IllegalArgumentException("Cant open platform while driving");
         } else {
-            trailer.extendPlatform();
+            this.getTrailer().extendPlatform();
         }
 
     }
 
-    public void load(Movable movable) {
-        if (trailer.getPlatformExtended()) {
-            trailer.load(movable);
-        } else {
-            throw new IllegalStateException("Platform is not extended cant load object");
-        }
-    }
-
-    public Movable unload(Movable movable) {
-        if (trailer.getPlatformExtended()) {
-            return trailer.unload(movable);
-        } else {
-            throw new IllegalStateException("Platform is not extended cant unload object");
-        }
-    }
+    /**
+     * Implemented by subclasses to get specific behavior inside different methods
+     */
+    public abstract Trailer getTrailer();
 
     /**
      * Retracts the platform
      */
     public void retractPlatform() {
-        trailer.retractPlatform();
+        this.getTrailer().retractPlatform();
     }// getTrailer()
 
     /**

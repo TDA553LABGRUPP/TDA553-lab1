@@ -25,17 +25,6 @@ public class Saab95 extends Car {
     }// Constructor
 
     /**
-     * Copy constructor. Makes a saab out of any input vehicle
-     * 
-     * @param other the other vehicle to be copied and made into a saab.
-     */
-    public Saab95(Vehicle other) {
-        super(2, other.getColor(), 125, "Saab95", other.getX(), other.getY(), other.getDirectionX(),
-                other.getDirectionY());
-        turboOn = false;
-    }
-
-    /**
      * Sets the boolean turboOn to true
      */
     public void setTurboOn() {
@@ -59,7 +48,7 @@ public class Saab95 extends Car {
     public double speedFactor() {
         double turbo = 1;
         if (turboOn)
-            turbo = 1.9;
+            turbo = 1.3;
         return enginePower * 0.01 * turbo;
     }// speedFactor()
 
