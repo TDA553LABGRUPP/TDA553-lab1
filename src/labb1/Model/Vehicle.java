@@ -1,4 +1,4 @@
-package labb1;
+package labb1.Model;
 
 import java.awt.*;
 
@@ -21,6 +21,7 @@ public abstract class Vehicle implements Movable {
     private double x; // x coordinate
     private double y; // y coordinate
     private double[] direction; // x and y list for the direction that the car is supposed to move in
+    private boolean engineStarted = false; // Whether the vehicle is started or not
 
     /**
      * Constructor of Vehicle
@@ -47,6 +48,14 @@ public abstract class Vehicle implements Movable {
         this.direction = new double[] { dirX, dirY };
         stopEngine();
     }// Constructor
+
+    public double getDirectionX() {
+        return direction[0];
+    }
+
+    public double getDirectionY() {
+        return direction[1];
+    }
 
     /**
      * 
@@ -101,24 +110,6 @@ public abstract class Vehicle implements Movable {
     }
 
     /**
-     * Gets the direction vector of the Vehicle in the y direction
-     * 
-     * @return Vehicle direction y
-     */
-    public double getDirectionY() {
-        return direction[1];
-    }
-
-    /**
-     * Gets the direction vector of the Vehicle in the x direction
-     * 
-     * @return Vehicle direction x
-     */
-    public double getDirectionX() {
-        return direction[0];
-    }
-
-    /**
      * @return the color of the vehicle
      */
     public Color getColor() {
@@ -164,7 +155,7 @@ public abstract class Vehicle implements Movable {
      * Starts the engine of the vehicle and increasing the speed
      */
     public void startEngine() {
-        incrementSpeed(0.1);
+        engineStarted = true;
     }
 
     /**
@@ -173,6 +164,7 @@ public abstract class Vehicle implements Movable {
     public void stopEngine() {
         this.currentSpeedX = 0;
         this.currentSpeedY = 0;
+        engineStarted = false;
     }
 
     /**
@@ -180,14 +172,17 @@ public abstract class Vehicle implements Movable {
      */
     @Override
     public void move() {
-        x += currentSpeedX;
-        y += currentSpeedY;
+        if (engineStarted){
+            x += currentSpeedX;
+            y += currentSpeedY;
+        }
+        
     }
 
     /**
      * Turns the vehicle to the left by decreasing the x vector
      */
-    @Override
+    
     public void turnLeft() {
         System.out.println("turning: " + this);
         decreaseDirectionX(0.1);
@@ -196,7 +191,7 @@ public abstract class Vehicle implements Movable {
     /**
      * Turns the vehicle to the right by increasing the x vector
      */
-    @Override
+
     public void turnRight() {
         increaseDirectionX(0.1);
 
@@ -297,4 +292,8 @@ public abstract class Vehicle implements Movable {
      * @return the speed factor which the movement depends on
      */
     public abstract double speedFactor();
+
+    public abstract void setTurboOn();
+
+    public abstract void setTurboOff();
 }// Class

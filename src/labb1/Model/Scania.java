@@ -1,4 +1,4 @@
-package labb1;
+package labb1.Model;
 
 import java.awt.*;
 
@@ -16,10 +16,8 @@ public class Scania extends Truck {
      * @param dirX  is the direction x of the truck
      * @param dirY  is sthe direction y of the truck
      */
-    public Scania(Color color, double x, double y, double dirX, double dirY, Trailer trailer) {
-        super(color, 770, "Scania", x, y, dirX, dirY, 300, trailer);
-        // Attaching the trailer
-        // this.trailer = = new Dumper(300, 0, 70, speedFactor(), x, y);
+    public Scania(Color color, double x, double y, double dirX, double dirY) {
+        super(color, 770, "Scania", x, y, dirX, dirY, 300, new Dumper(300, 70, 1.5, x, y));
 
     }// Constructor
 
@@ -32,12 +30,24 @@ public class Scania extends Truck {
     }// speedFactor()
 
     // /**
-    //  * Loads Scanias trailer with a Movable item
-    //  * 
-    //  * @param thing as a Movable
-    //  */
+    // * Loads Scanias trailer with a Movable item
+    // *
+    // * @param thing as a Movable
+    // */
     // public void load(Movable thing) {
-    //     trailer.load(thing);
+    // trailer.load(thing);
     // }
+
+
+    //Yes, trucks can have turbos. These dont though
+    @Override
+    public void setTurboOn() {
+        throw new IllegalArgumentException("Scania doesn't have a turbo");
+    }
+
+    @Override
+    public void setTurboOff() {
+        throw new IllegalArgumentException("Scania doesn't have a turbo");
+    }
 
 }// Class

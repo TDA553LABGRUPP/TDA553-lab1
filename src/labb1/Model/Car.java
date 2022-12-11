@@ -1,4 +1,4 @@
-package labb1;
+package labb1.Model;
 
 import java.awt.*;
 

@@ -1,4 +1,4 @@
-package labb1;
+package labb1.Model;
 
 import java.awt.*;
 
@@ -45,7 +45,7 @@ public abstract class Truck extends Vehicle {
      * Extends platform is the speed is 0
      */
     public void extendPlatform() {
-        if (this.getCurrentSpeedX() > 0 && this.getCurrentSpeedY() > 0) {
+        if (this.getCurrentSpeedX() > 0 || this.getCurrentSpeedY() > 0) {
             throw new IllegalArgumentException("Cant open platform while driving");
         } else {
             trailer.extendPlatform();
@@ -53,6 +53,8 @@ public abstract class Truck extends Vehicle {
 
     }
 
+
+    //Functions fo loading the truck uses loadable
     public void load(Movable movable) {
         if (trailer.getPlatformExtended()) {
             trailer.load(movable);
@@ -75,6 +77,12 @@ public abstract class Truck extends Vehicle {
     public void retractPlatform() {
         trailer.retractPlatform();
     }// getTrailer()
+
+    @Override
+    public void move(){
+        super.move();
+        trailer.linkPosition(getX(),getY());
+    }
 
     /**
      * Part of the class contract. SUbclass must implement speedFactor

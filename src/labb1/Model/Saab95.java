@@ -1,4 +1,4 @@
-package labb1;
+package labb1.Model;
 
 import java.awt.*;
 
@@ -32,22 +32,7 @@ public class Saab95 extends Car {
     public Saab95(Vehicle other) {
         super(2, other.getColor(), 125, "Saab95", other.getX(), other.getY(), other.getDirectionX(),
                 other.getDirectionY());
-        turboOn = false;
     }
-
-    /**
-     * Sets the boolean turboOn to true
-     */
-    public void setTurboOn() {
-        turboOn = true;
-    }
-
-    /**
-     * Sets the boolean turboOn to false
-     */
-    public void setTurboOff() {
-        turboOn = false;
-    }// setTurboOff()
 
     /**
      * The speed factor of Saab95. Used when gasing. Gets an increased speed factor
@@ -55,6 +40,16 @@ public class Saab95 extends Car {
      * 
      * @return the speed factor based on the engine power and turbo
      */
+    @Override
+    public void setTurboOn() {
+        this.turboOn = true;
+    }
+
+    @Override
+    public void setTurboOff() {
+        this.turboOn = false;
+    }
+
     @Override
     public double speedFactor() {
         double turbo = 1;

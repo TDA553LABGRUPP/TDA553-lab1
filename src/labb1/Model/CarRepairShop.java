@@ -1,4 +1,4 @@
-package labb1;
+package labb1.Model;
 
 /**
  * Class of the type CarRepairShop. Can unload and unload a car. Uses
@@ -33,7 +33,7 @@ public class CarRepairShop {
         loadable.load(car);
     }
 
-    // Todo fix this
+
     /**
      * Unload car if the CarRepairShop has it loaded.
      * 

@@ -1,3 +1,4 @@
+package labb1.Model;
 
 // package labb1;
 

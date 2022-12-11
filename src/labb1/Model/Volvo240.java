@@ -1,4 +1,4 @@
-package labb1;
+package labb1.Model;
 
 import java.awt.*;
 
@@ -22,6 +22,19 @@ public class Volvo240 extends Car {
     public Volvo240(Color color, double x, double y, double dirX, double dirY) {
         super(4, color, 100, "Volvo240", x, y, dirX, dirY);
     }
+
+
+    //Volvo could have a turbo if it wanted to
+    @Override
+    public void setTurboOn() {
+        throw new IllegalArgumentException("Volvo240 doesn't have a turbo");
+    }
+
+    @Override
+    public void setTurboOff() {
+        throw new IllegalArgumentException("Volvo240 doesn't have a turbo");
+    }
+
 
     /**
      * Speed factor of Volvo240. Used when gasing.
