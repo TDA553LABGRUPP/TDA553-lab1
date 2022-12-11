@@ -6,8 +6,7 @@ import java.awt.*;
  * Class for Scania
  */
 public class Scania extends Truck {
-    private Dumper trailer; // the trailer that is to be attached to the truck
-
+    // private Dumper trailer; // the trailer that is to be attached to the truck
     /**
      * Constructor for Scania
      * 
@@ -17,20 +16,12 @@ public class Scania extends Truck {
      * @param dirX  is the direction x of the truck
      * @param dirY  is sthe direction y of the truck
      */
-    public Scania(Color color, double x, double y, double dirX, double dirY) {
-        super(color, 770, "Scania", x, y, dirX, dirY, 300);
+    public Scania(Color color, double x, double y, double dirX, double dirY, Trailer trailer) {
+        super(color, 770, "Scania", x, y, dirX, dirY, 300, trailer);
         // Attaching the trailer
-        this.trailer = new Dumper(300, 0, 70, speedFactor(), x, y);
+        // this.trailer = = new Dumper(300, 0, 70, speedFactor(), x, y);
 
     }// Constructor
-
-    /**
-     * Get the trailer
-     */
-    @Override
-    public Dumper getTrailer() {
-        return trailer;
-    }
 
     /**
      * The speed factor of Scania. Depends on engine power of Scania
@@ -40,13 +31,13 @@ public class Scania extends Truck {
         return enginePower * 0.01;
     }// speedFactor()
 
-    /**
-     * Loads Scanias trailer with a Movable item
-     * 
-     * @param thing as a Movable
-     */
-    public void load(Movable thing) {
-        trailer.load(thing);
-    }
+    // /**
+    //  * Loads Scanias trailer with a Movable item
+    //  * 
+    //  * @param thing as a Movable
+    //  */
+    // public void load(Movable thing) {
+    //     trailer.load(thing);
+    // }
 
 }// Class
